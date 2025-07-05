@@ -1,0 +1,143 @@
+Estrutura de Repetição (Loop ou 
+laço)
+ Prof. André Chaves Lima
+ andrelima@iftm.edu.br
+Estrutura de repetição
+ “enquanto” (while)
+ É um estrutura de controle que
+ repete um bloco de comandos
+ enquanto uma condição for
+ verdadeira
+ • Problema exemplo:
+ Fazer um programa que lê números
+ inteiros até que um zero seja lido. Ao
+ final mostra a soma dos números lidos.
+ Entrada
+ Quando usar: quando não se sabe
+ previamente a quantidade de
+ repetições que será realizada.
+ 5
+ 2
+ 4
+ 0
+ Saída
+ 11
+Sintaxe / regra
+ V
+ while ( condição ) {
+ comando 1
+ comando 2
+ }
+ Regra:
+ V: executa e volta
+ F: pula fora
+Sintaxe / regra
+ F
+ while ( condição ) {
+ comando 1
+ comando 2
+ }
+ Regra:
+ V: executa e volta
+ F: pula fora
+Teste de mesa (while)
+Teste de mesa (Para Casa)
+Estrutura de repetição 
+“para” (for)
+ • Problema exemplo:
+ É um estrutura de controle que
+ repete um bloco de comandos
+ para um certo intervalo de de
+ valores.
+ Fazer um programa que lê um valor N e
+ depois N números inteiros. Ao final,
+ mostra a soma dos Nnúmeros lidos
+ Entrada
+ Quando usar: quando não se sabe
+ previamente a quantidade de
+ repetições que será realizada.
+ 3
+ 5
+ 2
+ 4
+ Saída
+ 11
+Sintaxe / regra
+ Executa somente na 
+primeira vez
+ V: executa e volta
+ F: pula fora
+ V
+ Executa toda vez 
+depois de voltar
+ for ( início ; condição ; incremento ) {
+ comando 1
+ comando 2
+ }
+Sintaxe / regra
+ Executa somente na 
+primeira vez
+ V: executa e volta
+ F: pula fora
+ F
+ Executa toda vez 
+depois de voltar
+ for ( início ; condição ; incremento ) {
+ comando 1
+ comando 2
+ }
+Importante
+ • Perceba que a estrutura “para” é ótima para se fazer uma 
+repetição baseada em uma CONTAGEM:
+ Resultado na tela:
+ for ( int i = 0; i < 5; i++){
+ System.out.printlm(“Valor de i: ” + i);
+Teste de mesa (for)
+Teste de mesa (Para casa)
+Estrutura de repetição 
+“faça-enquanto” (do while)
+ • Menos utilizada, mas em alguns casos se
+ encaixa melhor ao problema;
+ • O bloco de comandos executa pelo menos
+ umavez, pois a condição é verificada no final.
+A2
+ Sintaxe / regra
+ do{
+ comando 1
+ comando 2
+ } while ( condição ); 
+V
+ Regra:
+ V: executa e volta
+ F: pula fora
+Slide 14
+ A2 
+Andre; 09/08/2022
+A2
+ Sintaxe / regra
+ do{
+ comando 1
+ comando 2
+ } while ( condição ); 
+F
+ Regra:
+ V: executa e volta
+ F: pula fora
+Slide 15
+ A2 
+Andre; 09/08/2022
+Problema exemplo:
+ • Fazer umprogramapara ler uma temperatura emCelsius emostrar oequivalenteem
+ Fahrenheit.Perguntarseousuáriodesejarepetir (s/n).Casoousuáriodigite“s”, repetiro
+ programa.
+ • Fórmula:𝐹= +32
+ • Exemplodesaída:
+ Digite a temperatura em Celsius: 30.0
+ Equivaleem Fahrenheit: 86.0
+ Deseja repetir (s / n) ? s
+ Digite a temperatura em Celsius:21.0
+ Equivalente em Fahrenheit: 69.8
+ Deseja repetir (s / n) ? s
+ Digite a temperatura em Celsius: -10.5
+ Equivaleem Fahrenheit: 13.1
+ Deseja repetir (s / n) ? n

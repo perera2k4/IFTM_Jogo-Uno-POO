@@ -1,0 +1,272 @@
+POO –classes, atributos, 
+métodos e static
+ Prof. André Chaves Lima
+ andrelima@iftm.edu.br
+Problema exemplo
+ • FazerumprogramaparalerasmedidasdosladosdedoistriângulosXeY
+ (suponhamedidasválidas).Emseguida,mostrarovalordasáreasdosdois
+ triângulosedizerqualdosdoistriângulospossuiamaiorárea.
+ • Afórmulaparacalcularaáreadeumtriânguloapartirdasmedidasde
+ seusladosa,becéaseguinte(fórmuladeHeron):
+ area
+ Exemplo:
+ Entre comasmedidas do trianguloX (lado a,lado belado c):
+ 3.00
+ 4.00
+ 5.00
+ Entre comasmedidas do trianguloY (lado a,lado belado c):
+ 7.50
+ 4.50
+ 4.02
+ Área do triangulo X: 6.0000
+ Área do triangulo Y: 7.5638
+ Triangulocom amaiorárea:Y
+Discussão
+ Triânguloéumaentidadecomtrês
+ atributos:a,b,c;
+ Estamosusandotrêsvariáveisdistintas
+ pararepresentarcadatriângulo:
+ doubleaX,bX,cX,aY,bY,cY;
+ Paramelhorarisso,vamosusaruma
+ Classepararepresentarumtriângulo.
+ 3.00 4.00 5.00
+ 7.50 4.50 4.02
+ Memória
+ aX bX cX
+ aY bY cY
+Classe
+ • Éumtipoestruturado que podeconter(membros):– Atributos (dados / campos);– Métodos(funções /operações);
+ • Aclasse tambémpodeprovermuitos outros recursos, tais como:– Construtores;– Sobrecarga;– Encapsulamento;– Herança– Polimorfismo
+Classe
+ • Exemplos:– Entidades: Produto, Cliente, Triângulo;– Serviços:
+ ProdutoService,
+ StorageService;
+ ClienteService,– Controladores: ProdutoController, ClienteController;– Utilitários: Calculadora, Compactador;– Outros(views, repositórios, gerenciadores, etc..).
+ EmailService,
+Classe
+ 3.00
+ aX
+ 7.50
+ aY
+ 4.00
+ bX
+ 4.50
+ 5.00
+ cX
+ 4.02
+ cY
+ x
+ y
+ 3.00
+ a
+ 5.00
+ 7.50
+ 3.00
+ b
+ 4.50
+ c
+ 4.02
+ a
+ b
+ c
+ bY
+Instanciação
+ (alocação dinâmica de memória)
+ Memória
+ Stack Heap
+ areaX areaY p
+ y x a b c
+ 0x100358
+ 0x100358
+Classes, objetos, atributos
+ • Classe: é a definição do tipo:
+ • Objeto: são instâncias da classe
+ x
+ 3.00
+ a
+ 5.00
+ 3.00
+ b
+ c
+ y
+ 7.50
+ a
+ 4.50
+ 4.02
+ c
+ b
+Discussão
+ ComoousodaClasse,agoranóstemos
+ umavariávelcompostadotipo“Triangulo”
+ pararepresentarcadatriângulo.
+ Triangulox,y;
+ y=newTriangulo();
+ y=newTrinagulo();
+ AgoravamosmelhorarnossaClasse,
+ acrescentandonelaumMétodoparacalcular
+ aárea.
+ Memória
+ 3.00 5.00 3.00 x
+ a b c
+ 7.50 4.50 4.02 y
+ a b c
+Exemplo da Main utilizando classe
+Exemplo da classe Triângulo
+Exemplo da classe Triângulo
+ pacote da classe
+ nome da classe
+ atributo da classe
+ O prefixo 
+“public” indica 
+que o atributo 
+ou métodos 
+pode ser usado 
+em outros 
+arquivos Tipo do dado que o método 
+retorna (se o método não retorna 
+nada, usa-se a palavra “void”)
+ Nome do método
+ Lista de parâmetros do método
+ Corpo do 
+método
+Projeto da classe (UML)
+ nome da classe
+ atributo da classe
+ Métodos da classe
+Discussão
+ • Quais são os benefícios de se calcular a área de um triângulo por meio de
+ umMÉTODOdentrodaCLASSETriangulo?
+ 1. Reaproveitamento de código: nós eliminamos o código repetido (cálculo
+ das áreas do triângulos x e y) no programa principal;
+ 2. Delegação de responsabilidades: quem deve ser responsável por saber
+ como calcular a área de um triângulo é o próprio triângulo. A lógica do
+ cálculo da área não deve estar em outro lugar.
+Outro exemplo
+ Fazer um programa para ler os dados de um produto em estoque (nome, preço e
+ quantidade no estoque). Em Seguida:
+ • Mostrar os dados do produto (nome, preço, quantidade no estoque, valor
+ total no estoque);
+ • Realizar umaentrada no estoque e mostrar novamente os dados do produto;
+ • Realizar umasaída no estoque e mostrar novamente os dados do produto.
+ Para resolver este problema, você deve criar
+ Uma Classe conforme o projeto anterior:
+ (veja exemplo na próxima página)
+Exemplo de entrada e saída 
+de dados
+ Entre com os dados do produto:
+ Nome: TV
+ Preco: 900.00
+ Quantidade no estoque: 10
+ Dados do Produto: TV, R$ 900.00, 10 unidades, Total: R$ 9000.00
+ Entre com o numero de produtos que deseja adicionar no estoque: 5
+ Atualização dos Dados do Produto: TV, R$ 900.00, 15 unidades, Total: R$ 13500.00
+ Entre com o numero de produtos que deseja remover do estoque: 3
+ Atualização dos Dados do Produto: TV, R$ 900.00, 12 unidades, Total: R$ 10800.00
+Exemplo:
+ Entre com os dados do produto:
+ Nome: TV
+ Preco: 900.00
+ Quantidade no estoque: 10
+ Dados do Produto: TV, R$ 900.00, 10 unidades, Total: R$ 9000.00
+ Entre com o numero de produtos que deseja adicionar no estoque:
+ 5
+ Atualização dos Dados do Produto: TV, R$ 900.00, 15 unidades,
+ Total: R$ 13500.00
+ Entre com o numero de produtos que deseja remover do estoque: 3
+ Atualização dos Dados do Produto: TV, R$ 900.00, 12 unidades,
+ Total: R$ 10800.00
+Object e toString
+ • Discussão:– Toda classe emJava é umasubclasse Object.
+ • Object possui os seguintes métodos:– getClass: Retorna o tipo do objeto;– equals: compara se o objeto é igual a outro;– hashCode: retorna um código hash do objeto;– toString: converte o objeto para String
+Membros estáticos
+ Membros
+ =
+ atributos e métodos
+Membros estáticos
+ • Tambémchamadosmembrosdeclasse– Emoposição amembroseinstância
+ • Sãomembrosquefazemsentido independentemente de objetos. Não precisam de
+ objeto para serem chamados. São chamados a partir do próprio nome da classe.
+ • Aplicações comuns:– Classes utilitárias– Declaração de constantes
+ Math.sqrt(double)
+ • Umclasse que possui somente membros estáticos, pode ser uma classe estática
+ também. Está classe não poderá ser instanciada.
+Classe
+ x
+ y
+ 3.00
+ a
+ 5.00
+ 7.50
+ 3.00
+ b
+ 4.50
+ c
+ 4.02
+ a
+ b
+ c
+ x.area()
+ y.area()
+ 6.0
+ 7.5638
+Problema exemplo
+ • Fazer um programa para ler um valor numérico qualquer, e daí mostrar
+ quanto seria o valor de uma circunferência e do volume de uma esfera
+ para um raio daquele valor. Informar também o valor de PI com duas casas
+ decimais
+ Exemplo:
+ Entre com o raio: 3.00
+ Circunferencia: 18.85
+ Volume: 113.10
+ Valor PI: 3.14
+Checklist
+ • Versão 1: métodosna própria classe do programa;– Nota: dentro de um método estático você não pode
+ chamar membros deinstância da mesma classe;
+ • Versão 2: classe Calculadora com membros de instância;
+ • Versão 3: classe Calculadora com método estático.
+VERSÃO 1
+VERSÃO 2 
+Discussão
+ • No problema dos triângulos, cada
+ triângulo possui sua área;
+ • Area() é uma operação concernente
+ ao objeto: cada triângulo possuiu sua
+ área.
+ x
+ y
+ 3.00
+ a
+ 5.00
+ 7.50
+ 3.00
+ b
+ 4.50
+ c
+ 4.02
+ a
+ b
+ c
+ x.area()
+ 6.0
+ y.area()
+ 7.5638
+ • Já no caso da calculadora, os
+ valores pos cálculos não mudam
+ para calculadoras diferentes, ou
+ seja, são cálculos estáticos. O
+ valor de Pi também é estático.
+ calc1
+ calc2
+ 3.14
+ PI
+ 3.14
+ calc1.PI
+ 3.14
+ calc1.circunferência(3.0)
+ 18.85
+ calc2.PI
+ 3.14
+ calc2.circunferência(3.0)
+ 18.85
+ PI
+VERSÃO 3 

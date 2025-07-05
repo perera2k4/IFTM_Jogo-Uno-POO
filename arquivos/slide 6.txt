@@ -1,0 +1,159 @@
+POO – construtores, this, 
+sobrecarga e encapsulamento
+ Prof. André Chaves Lima
+ andrelima@iftm.edu.br
+Programação Orientado a Objeto 
+(POO)
+ 1. Apresentação da Disciplina– Ferramenta de apoio as aulas:
+ • Google classroom:
+ • Código de entrada na disciplina:
+Construtor
+ • É uma operação especial da classe, que executa no momento da
+ instanciação do objeto;
+ • Usocomuns:– Iniciar valores dos atributos;– Permitir ou obrigar que o objeto receba dados / dependências no
+ momento desua instanciação (injeção de dependência);
+ • Seumconstrutor customizado não for especificado, a classe disponibiliza
+ o construtor padrão:
+ Produto p = new Produto();
+ • É possível especificar mais de um construtor na mesma classe
+ (sobrecarga);
+Exemplo:
+ Entrecomosdadosdoproduto:
+ Nome:TV
+ Preco:900.00
+ Quantidade noestoque:10
+ DadosdoProduto:TV,R$900.00,10unidades,Total:R$9000.00
+ Entre com o numero de produtos que deseja adicionar no estoque:
+ 5
+ Atualização dos Dados do Produto: TV, R$ 900.00, 15 unidades,
+ Total:R$13500.00
+ Entrecomonumerodeprodutos quedesejaremover doestoque:3
+ Atualização dos Dados do Produto: TV, R$ 900.00, 12 unidades,
+ Total:R$10800.00
+ Obs: Implementação do exemplo no github
+Proposta de melhoria
+ • Quando executamos o comando abaixo, instanciamos um produto com seus 
+atributos “vazios”:
+ Memória
+ Produto p = new Produto();
+ produto
+ null
+ 0.0
+ nome preco quantidade
+ 0
+ • Entretanto, faz sentido um produto que não tem nome? Faz sentido um produto 
+que não tem preço?
+ • Com o intuito de evitar a existência de produtos sem nome e sem preço, é possível 
+fazer com que seja “obrigatória” a iniciação desses valores?
+Palavra this
+ • Éumareferência para o próprio objeto;
+ • Usoscomuns:– Diferenciar atributos de variáveis locais;– Passar o próprio objeto como argumento na chamada de
+ ummétodoouconstrutor;
+Diferenciar atributos de varáveis 
+locais
+ Produto p = new Produto(“TV”, 1500.0, 0); public Produto(Stringnome, double preco,   
+intquantidade){
+ this.nome= nome;
+ this.preco = preco;
+ this.quantidade = quantidade;
+ } 
+Memória
+ (escopo do construtor) 
+“TV”
+ nome
+ 1500.0
+ preco
+ 0
+ quantidade
+ 0.0 produto
+ nome preco quantidade
+ null 0
+ this.nome
+Sobrecarga
+ • É um recurso que uma classe possuiu de oferecer mais de
+ uma operação (métodos) com o mesmo nome, porém com
+ diferentes listas de parâmetros.
+Proposta de melhoria
+ • Vamos criar um construtor opcional, o qual recebe apenas
+ nome e preço do produto. A quantidade em estoque deste
+ novo produto, por padrão, deverá então ser iniciada com o
+ valor zero;
+ • Nota:épossível também incluir um construtor padrão.
+Encapsulamento
+ • É um princípio que consiste
+ em esconder detalhes de
+ implementação de uma classe,
+ expondo apenas operações
+ seguras e que mantenham os
+ objetos
+ em um estado
+ consistente;
+ • Regra de outro: o objeto deve
+ sempre estar em um estado
+ consistente, e a própria classe
+ deve garantir isso.
+ • Analogia:
+Regra geral básica
+ • Umobjeto NÃO deve expor nenhum atributo (modificador de
+ acesso private );
+ • Os atributos deve ser acessados por meio de métodos get e
+ set.– Padrão JavaBeans: https
+ ://en.wikipedia.org/wiki/javaBeans
+Modificadores de acesso
+ • https
+ ://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.
+ html
+ • private: o membro só pode ser acessado na própria classe
+ • (nada): o membro só pode ser acessado nas classes do mesmo
+ pacote;
+ • protected: o membro só pode ser acessado no mesmo pacote, bem
+ como emsubclasses de pacotes diferentes;
+ • public: o membro é acesso por todas classes (ao menos que eles
+ resida em um módulo diferente que não exporte o pacote onde ele
+ está)
+Modificadores de acesso
+ • https
+ ://stackoverflow.com/questions/215497/what-is-the-difference-between-public
+protected-package-private-and-private-in
+Exercício de Fixação
+ Emumbanco, para se cadastrar uma conta bancária, é necessário informar o número da conta, o nome
+ do titular da conta, e o valor de depósito inicial que o titular depositou ao abrir a conta. Este valor de
+ depósito inicial, entretanto, é opcional, ou seja: se o titular não tiver dinheiro a depositar no momento
+ de abrir sua conta, o depósito inicial não será feito e o saldo inicial da conta será, naturalmente, zero.
+ Importante: uma vez que uma conta bancária foi aberta, o número da conta nunca poderá ser alterado.
+ Já o nome do titular pode ser alterado (pois uma pessoa pode mudar de nome por ocasião de
+ casamento, por exemplo).
+ Por fim, o saldo da conta não pode ser alterado livremente. É preciso haver um mecanismo para
+ proteger isso. O saldo só aumenta por meio de depósitos, e só diminui por meio de saques. Para cada
+ saque realizado, o banco cobra uma taxa de $ 5.00. Nota: a conta pode ficar com saldo negativo se o
+ saldo não for suficiente para realizar o saque e/ou pagar a taxa.
+ Você deve fazer um programaque realize o cadastrode uma conta, dando opção para que seja ou não
+ informado o valor de depósito inicial. Em seguida, realizar um depósito e depois um saque, sempre
+ mostrando os dados da conta após cada operação.
+ (exemplos nas próximas páginas)
+ (exemplos nas próximas paginas)
+Exemplo 1
+ Entrecom onumerodaconta:8532
+ Entrecom nomedotitular:AlexGreen
+ Vocedesejarealizar umdeposito inicial (s/n)?s
+ Entrecom valordodepositoinicial:500.00
+ DadosdaConta:
+ Conta:8532,Titular:AlexGreen, saldo:R$500.00
+ Entrecom umvalorparadeposito:200.00
+ Atualizaçãodosdadosdaconta:
+ Conta:8532,Titular:AlexGreen, saldo:R$700.00
+ Entrecom umvalorparasaque:300.00
+ Atualizaçãodosdadosdaconta:
+ Conta:8532,Titular:AlexGreen, saldo:R$395.00
+Exemplo 2
+ Entrecom onumerodaconta:7801
+ Entrecom nomedotitular:Maria Souza
+ Vocedesejarealizar umdeposito inicial (s/n)?n
+ DadosdaConta:
+ Conta:7801,Titular:MariaSouza, saldo:R$0.00
+ Entrecom umvalorparadeposito:200.00
+ Atualizaçãodosdadosdaconta:
+ Conta:7801,Titular:MariaSouza, saldo:R$200.00
+ Entrecom umvalorparasaque:198.00
+ Atualizaçãodosdadosdaconta:
+ Conta:7801,Titular:MariaSouza, saldo:R$-3.00
