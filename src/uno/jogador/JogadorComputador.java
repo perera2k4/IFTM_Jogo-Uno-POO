@@ -1,5 +1,4 @@
 package uno.jogador;
-
 import uno.baralho.Carta;
 import java.util.*;
 

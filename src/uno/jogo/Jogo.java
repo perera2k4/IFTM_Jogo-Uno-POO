@@ -1,5 +1,4 @@
 package uno.jogo;
-
 import uno.baralho.*;
 import uno.jogador.*;
 import java.util.*;
