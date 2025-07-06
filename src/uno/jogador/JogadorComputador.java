@@ -12,7 +12,7 @@ public class JogadorComputador extends Jogador {
 
     @Override
     public Carta jogarCarta(Carta cartaTopo, Scanner scanner) {
-        // Implementação será feita na lógica do jogo
+        // Implementação feita na lógica do jogo
         return null;
     }
 }

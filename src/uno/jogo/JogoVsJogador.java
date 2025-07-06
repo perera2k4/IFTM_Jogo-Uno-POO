@@ -14,7 +14,6 @@ public class JogoVsJogador extends Jogo {
         jogadores.add(new uno.jogador.JogadorHumano(nome1));
         jogadores.add(new uno.jogador.JogadorHumano(nome2));
 
-        // Cada jogador compra 7 cartas
         for (Jogador jogador : jogadores) {
             for (int i = 0; i < 7; i++) {
                 jogador.receberCarta(baralho.comprar());
@@ -33,7 +32,6 @@ public class JogoVsJogador extends Jogo {
             boolean corEscolhida = false;
             String novaCor = null;
 
-            // Se deve comprar cartas por +2 ou +4
             if (cartasParaComprar > 0) {
                 for (int i = 0; i < cartasParaComprar; i++) {
                     Carta c = baralho.comprar();
@@ -81,7 +79,7 @@ public class JogoVsJogador extends Jogo {
                     Carta escolhida = jogador.getMao().get(escolha-1);
                     if (podeJogar(escolhida, cartaTopo)) {
                         jogador.removerCarta(escolhida);
-                        // Se for coringa ou +4, escolher cor
+
                         if (escolhida.getCor().equals("Preto")) {
                             String[] cores = {"Vermelho", "Verde", "Azul", "Amarelo"};
                             int corOpcao = -1;
@@ -106,7 +104,7 @@ public class JogoVsJogador extends Jogo {
                             corEscolhida = true;
                             System.out.println(jogador.getNome() + " jogou: " + escolhida + " e escolheu a cor " + novaCor);
                             jogou = true;
-                            // Se for +4, próximo compra 4 cartas e perde a vez
+
                             if (escolhida.getValor().equals("+4")) {
                                 cartasParaComprar = 4;
                                 pularVez = true;

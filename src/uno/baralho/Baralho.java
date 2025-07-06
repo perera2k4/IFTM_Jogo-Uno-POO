@@ -1,5 +1,4 @@
 package uno.baralho;
-
 import java.util.*;
 
 public class Baralho {

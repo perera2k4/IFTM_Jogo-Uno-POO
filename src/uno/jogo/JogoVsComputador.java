@@ -13,7 +13,6 @@ public class JogoVsComputador extends Jogo {
         jogadores.add(new uno.jogador.JogadorHumano(nome1));
         jogadores.add(new uno.jogador.JogadorComputador("Computador"));
 
-        // Cada jogador compra 7 cartas
         for (Jogador jogador : jogadores) {
             for (int i = 0; i < 7; i++) {
                 jogador.receberCarta(baralho.comprar());
@@ -22,20 +21,20 @@ public class JogoVsComputador extends Jogo {
 
         cartaTopo = baralho.comprar();
         System.out.println("Carta inicial: " + cartaTopo);
-
         boolean jogoAtivo = true;
         int cartasParaComprar = 0;
         boolean pularVez = false;
+
         while (jogoAtivo) {
             Jogador jogador = jogadores.get(jogadorAtual);
             System.out.println("\nVez de " + jogador.getNome());
             boolean corEscolhida = false;
             String novaCor = null;
 
-            // Se deve comprar cartas por +2 ou +4
             if (cartasParaComprar > 0) {
                 for (int i = 0; i < cartasParaComprar; i++) {
                     Carta c = baralho.comprar();
+                    
                     if (c != null) jogador.receberCarta(c);
                 }
                 System.out.println(jogador.getNome() + " comprou " + cartasParaComprar + " cartas!");
@@ -81,7 +80,7 @@ public class JogoVsComputador extends Jogo {
                         Carta escolhida = jogador.getMao().get(escolha-1);
                         if (podeJogar(escolhida, cartaTopo)) {
                             jogador.removerCarta(escolhida);
-                            // Se for coringa ou +4, escolher cor
+
                             if (escolhida.getCor().equals("Preto")) {
                                 String[] cores = {"Vermelho", "Verde", "Azul", "Amarelo"};
                                 int corOpcao = -1;
@@ -106,7 +105,7 @@ public class JogoVsComputador extends Jogo {
                                 corEscolhida = true;
                                 System.out.println(jogador.getNome() + " jogou: " + escolhida + " e escolheu a cor " + novaCor);
                                 jogou = true;
-                                // Se for +4, próximo compra 4 cartas e perde a vez
+
                                 if (escolhida.getValor().equals("+4")) {
                                     cartasParaComprar = 4;
                                     pularVez = true;
@@ -134,15 +133,14 @@ public class JogoVsComputador extends Jogo {
                         System.out.println("Escolha inválida.");
                     }
                 }
-            } else { // Computador
+            } else { 
                 System.out.println("Mão do computador: " + jogador.getMao().size() + " cartas.");
                 Carta jogada = escolherJogadaComputador(jogador.getMao(), cartaTopo);
                 if (jogada != null) {
                     jogador.removerCarta(jogada);
-                    // Se for coringa ou +4, computador escolhe cor
+
                     if (jogada.getCor().equals("Preto")) {
                         String[] cores = {"Vermelho", "Verde", "Azul", "Amarelo"};
-                        // Escolhe a cor que mais tem na mão
                         java.util.Map<String, Integer> contagem = new java.util.HashMap<>();
                         for (String cor : cores) contagem.put(cor, 0);
                         for (Carta c : jogador.getMao()) {
@@ -159,7 +157,7 @@ public class JogoVsComputador extends Jogo {
                         }
                         cartaTopo = new uno.baralho.Carta(corEscolhidaPc, jogada.getValor());
                         System.out.println("Computador jogou: " + jogada + " e escolheu a cor " + corEscolhidaPc);
-                        // Se for +4, próximo compra 4 cartas e perde a vez
+
                         if (jogada.getValor().equals("+4")) {
                             cartasParaComprar = 4;
                             pularVez = true;
@@ -197,26 +195,24 @@ public class JogoVsComputador extends Jogo {
         }
     }
 
-    // Prioridade: +4 > especiais mesma cor > cor igual > número igual > coringa
     private Carta escolherJogadaComputador(List<Carta> mao, Carta cartaTopo) {
-        // 1. +4
         for (Carta c : mao) {
             if (c.getValor().equals("+4") && podeJogar(c, cartaTopo)) return c;
         }
-        // 2. Especiais mesma cor (Pular, Inverter, +2, Bloqueio)
+
         for (Carta c : mao) {
             if ((c.getValor().equals("Pular") || c.getValor().equals("Inverter") || c.getValor().equals("+2") || c.getValor().equals("Bloqueio"))
                 && c.getCor().equals(cartaTopo.getCor()) && podeJogar(c, cartaTopo)) return c;
         }
-        // 3. Cor igual
+
         for (Carta c : mao) {
             if (c.getCor().equals(cartaTopo.getCor()) && podeJogar(c, cartaTopo)) return c;
         }
-        // 4. Número igual
+
         for (Carta c : mao) {
             if (c.getValor().equals(cartaTopo.getValor()) && podeJogar(c, cartaTopo)) return c;
         }
-        // 5. Coringa
+
         for (Carta c : mao) {
             if (c.getValor().equals("Coringa") && podeJogar(c, cartaTopo)) return c;
         }

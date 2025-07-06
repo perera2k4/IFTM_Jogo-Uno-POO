@@ -2,7 +2,6 @@ package uno.jogo;
 
 import uno.baralho.*;
 import uno.jogador.*;
-import uno.excecao.UnoException;
 import java.util.*;
 
 public abstract class Jogo {
